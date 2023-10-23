@@ -19,17 +19,17 @@ router.get('/', (req, res) => {
 }]
 
       
-res.render('places/index', { places })
+    res.render('places/index', { places })
 })
 
 router.get('/new', (req, res) => {
     res.render('places/new')
   })
   
-  router.get('/:id', (req, res) => {
-    res.render('places/show')
-  })
-  
+  router.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST /places')
+})
 
 router.get('/:id', (req, res) => {
   let id = Number(req.params.id)

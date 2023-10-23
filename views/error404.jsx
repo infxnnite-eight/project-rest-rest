@@ -1,6 +1,6 @@
 const React = require('react')
 const Def = require('./default')
-
+//error javascript function
 function error404 () {
     return (
       <Def>
