@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
-// GET /places
-// GET /places
+const places = require('../models/places.js')
+
 router.get('/', (req, res) => {
     let places = [{
   name: 'H-Thai-ML',
@@ -25,5 +25,10 @@ router.get('/new', (req, res) => {
     res.render('places/new')
   })
   
+  router.post('/', (req, res) => {
+  console.log(req.body)
+  res.send('POST /places')
+})
+
 
 module.exports = router
