@@ -1,16 +1,22 @@
-const router = require('express').Router()
-const db = require('../models')
+const mongoose = require('mongoose')
 
-router.get('/', (req, res) => {
-    db.Place.FindById(req.params.id)
-    .then((places) => {
-      res.render('places/show', { place })
-    })
-    .catch(err => {
-      console.log(err) 
-      res.render('error404')
-    })
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  pic: String,
+  cuisines: { type: String, required: true },
+  city: { type: String, default: 'Anytown' },
+  state: { type: String, default: 'USA' },
+  founded: Number
 })
+
+placeSchema.methods.showEstablished = function() {
+  return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
+}
+
+
+
+
+
 
 router.get('/', (req, res) => {
   res.send('GET /places stub')
